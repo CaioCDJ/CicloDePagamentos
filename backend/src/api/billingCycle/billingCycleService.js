@@ -1,8 +1,12 @@
 
 const BillingCycle = require('./billingCycle');
+const errorHandler = require('../common/errorHandler')
+
 
 BillingCycle.methods(['get','post','put','delte']);
-BillingCycle.updateOptions({new: true, runValidators:true})
+BillingCycle.updateOptions({new: true, runValidators:true});
+BillingCycle.after('post', errorHandler).after('put', errorHandler);
+
 
 BillingCycle.route('get', (req, res, next) => {
     
@@ -42,7 +46,6 @@ BillingCycle.route('summary', (req, res, next) => {
         if(error) {
                 res.status(500).json({errors: [error]})
             } else {
-                console.log(result[0]);
                 res.json(result[0] || {credit: 0, debt: 0})
             }
         })
