@@ -1,5 +1,6 @@
 import React,{Component} from "react";
-
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Content from '../common/template/content.jsx';
 import ContentHeader from '../common/template/contentHeader.jsx';
 
@@ -7,9 +8,16 @@ import Tabs from '../common/tab/tabs.jsx';
 import TabHeader from '../common/tab/tabHeader.jsx';
 import TabsHeader from '../common/tab/tabsHeader.jsx';
 import TabsContent from '../common/tab/tabsContent.jsx';
+import TabContent from '../common/tab/tabContent.jsx';
+import {selectTab, showTabs} from '../common/tab/tabActions.jsx';
 
 class BillingCycle extends Component{
-    
+
+    componentWillMount(){
+        this.props.selectTab('tabList');
+        this.props.showTabs('tabList', 'tabCreate');
+    }
+
     render(){
 
         return(
@@ -19,12 +27,17 @@ class BillingCycle extends Component{
                 <Content>
                     <Tabs>
                         <TabsHeader>
-                            <TabHeader label='listar' icon='bars' target='tagList'/>
-                            <TabHeader label='Incluir' icon='plus' target='tagCreate'/>
-                            <TabHeader label='Alterar' icon='pencil' target='tagUpdate'/>
-                            <TabHeader label='Excluir' icon='trash-o' target='tagDelete'/>
+                            <TabHeader label='Listar' icon='bars' target='tabList'/>
+                            <TabHeader label='Incluir' icon='plus' target='tabCreate'/>
+                            <TabHeader label='Alterar' icon='pencil' target='tabUpdate'/>
+                            <TabHeader label='Excluir' icon='trash-o' target='tabDelete'/>
                         </TabsHeader>
-                        <TabsContent></TabsContent>
+                        <TabsContent>
+                            <TabContent id='tabList'><h1>Listar</h1></TabContent> 
+                            <TabContent id='tabCreate'><h1>Incluir</h1></TabContent> 
+                            <TabContent id='tabUpdate'><h1>Alterar</h1></TabContent> 
+                            <TabContent id='tabDelete'><h1>Excluir</h1></TabContent> 
+                        </TabsContent>
                     </Tabs>    
                 </Content>
             </div>
@@ -33,4 +46,5 @@ class BillingCycle extends Component{
     }
 }
 
-export default BillingCycle;
+const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs},dispatch);
+export default connect(null,mapDispatchToProps)(BillingCycle);
