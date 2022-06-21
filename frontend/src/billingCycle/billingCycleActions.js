@@ -16,20 +16,43 @@ export function getList() {
 }
 
 export function create(values){
-   
+    return submit(values, 'post');
+}
+
+export function update(values){
+    return submit(values, 'put');
+}
+
+export function remove(values){
+    return submit(values, 'delete');
+}
+
+
+function submit(values,method){
+
     return dispatch =>{
-        axios.post(`${BASE_URL}/billingCycles`,values)
+        
+        const id = values._id ? values._id : '';
+        axios[method](`${BASE_URL}/billingCycles/${id}`,values)
             .then(resp=> {
                 toastr.success('sucesso', 'Operação Realizada com sucesso.');
                 dispatch(init())
             }).catch(e=>{
-                
+                console.error(e);
                 e.response.data.errors.forEach(error => toastr.error('Erro',error));
             })
     }   
 }
 
-export function showUpdate(billingCycle){
+export function showDelete(billingCycle){
+    return[
+        showTabs('tabDelete'),
+        selectTab('tabDelete'),
+        initialize('billingCycleForm',billingCycle )
+    ]
+}
+
+export function showTab(billingCycle){
     return[
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
