@@ -5,11 +5,13 @@ import { Provider } from "react-redux";
 
 // espera a resolucao de uma promise
 import promise from 'redux-promise';
+import multi from 'redux-multi';
+import thunk from 'redux-thunk';
 
 import reducers from './main/reducers';
 import App from "./main/App";
 
-const store = applyMiddleware(promise)(createStore)(reducers);
+const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers);
 
 ReactDom.render(
     <Provider store={store}>
