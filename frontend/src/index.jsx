@@ -10,11 +10,11 @@ import thunk from 'redux-thunk';
 
 import reducers from './main/reducers';
 import App from "./main/App";
-
+import Routes from './main/routes.jsx';
 const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers);
 
 ReactDom.render(
     <Provider store={store}>
-        <App/>
+        <Routes/>
     </Provider>,
      document.getElementById('app'));
