@@ -17,7 +17,7 @@ Este projeto segue o curso de react <a href="https://www.udemy.com/course/react-
 
 - Para instalar os pacotes tanto na pasta backend, quanto nas pastas frontend
     
-        npm install
+        npm install --force
     
 - Para iniciar a aplicação backend
     
