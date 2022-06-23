@@ -1,3 +1,24 @@
+body{
+    background: rgb(32, 35, 36);
+    color:white;
+}
+.content-wrapper{
+    
+    background: rgb(32, 35, 36);
+}
+.box-footer,
+.main-footer{
+    color: #fff; 
+    background: rgb(32, 35, 36);
+    border:0;
+}
+.nav-tabs-custom{
+ color: #fff; 
+    background: #222
+}
+.nav-tabs-custom fieldset legend{
+    color:#fff
+}
 
 button {
     margin-left:5px;
