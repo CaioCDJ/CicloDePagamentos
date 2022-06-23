@@ -1,4 +1,4 @@
-const require('lodash');
+const _ =  require('lodash');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('./user');
@@ -37,7 +37,7 @@ const login = (req,res,next) => {
 
 const validateToken =(req,res,next) =>{
     const token = req.body.token || '';
-    jwt.verify(token,env.authSecret,fucntion(err,decoded){
+    jwt.verify(token,env.authSecret,function(err,decoded){
         return res.status(200).send({valid:!err})
     })
 }
@@ -77,10 +77,10 @@ const signup = (req,res,next) =>{
                 if(err){
                     return sendErrorsFromDB(res,err);
                 } else {
-                    ogin(req,res,next);
+                    login(req,res,next);
                 }
-            }
-        })
+            })
+        }
     })
 }
 
