@@ -23,12 +23,13 @@ const login = (req,res,next) => {
         if(err){
             return sendErrorsFromDB(res,err);
         } else if(user && bcrypt.compareSync(password, user.password)){
-            const token = jwt.sign(user.ToJSON(),env.authSecret,{
+              const token = jwt.sign(user,env.authSecret,{
                 expiresIn: '1 day'
             })
             const {name, email} = user;
             res.json({name,email,token})
         } else{
+            console.log()
             return res.status(400).send({errors:['Usuario/Senha invalidos']})
         }
 
@@ -44,10 +45,11 @@ const validateToken =(req,res,next) =>{
 
 
 const signup = (req,res,next) =>{
-    
+    console.log(req) 
     const name = req.body.name || '';
     const email = req.body.email|| '';
-    const confirmPassword = req.body.confirm_Password || '';
+    const password = req.body.password || '';
+    const confirmPassword = req.body.confirm_password || '';
 
     console.log(name, email);
     if(!email.match(emailRegex)){

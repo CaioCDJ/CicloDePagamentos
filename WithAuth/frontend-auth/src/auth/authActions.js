@@ -4,7 +4,8 @@ import consts from '../cosnts';
 
 function submit(values, url) {
     return dispatch => {
-        axios.post(url, values)
+      console.log(values);  
+      axios.post(url, values)
             .then(resp => {
                 dispatch([{
                         type: 'USER_FETCHED', payload: resp.data}
@@ -22,7 +23,6 @@ export function login(values){
     return submit(values, `${consts.OAPI_URL}/login`);
 }
 export function signup(values){
-    
     return submit(values, `${consts.OAPI_URL}/signup`);
 
 }
@@ -34,7 +34,8 @@ export function logout(){
 export function validateToken(token){
     return dispatch =>{
         if(token){
-            axios.post(`${cosnts.OAPI_URL}/validateToken`, {token})
+          console.log(consts.OAPI_URL)
+            axios.post(`${consts.OAPI_URL}/validateToken`, {token})
                 .then(resp =>{
                     dispatch({type:'TOKEN_VALIDATED', payload: resp.date.valid})
                 }).catch(e=> dispatch({type:'TOKEN_VALIDATED', payload:false}))

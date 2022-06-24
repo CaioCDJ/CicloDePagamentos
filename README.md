@@ -1,11 +1,12 @@
-<img src="ProjectImg.png">
-
-<br>
 
 # Estudo da utilização dos principais fundamentos do React e Redux
 
 Este projeto segue o curso de react <a href="https://www.udemy.com/course/react-redux-pt/">Curso React + Redux: Fundamentos e 2 Apps do Absoluto ZERO! | Udemy</a>
 
+
+<img src="ProjectImg.png">
+<img src="auth.png">
+<br>
 
 ## Dependencias
 | Recurso | Link |
