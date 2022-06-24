@@ -2,7 +2,6 @@ import React, {Component} from  'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from'redux';
 import {logout} from '../../auth/authActions.js';
-
 class Navbar extends Component{
     
     constructor(props){
@@ -20,7 +19,7 @@ class Navbar extends Component{
             <div className="navbar-custom-menu">
                 <ul className="nav navbar-nav">
                     <li onMouseLeave={() => this.changeOpen()}
-                        className={`dropdown user user-menu ${this.state.open ? 'open' :''}`}>
+                        className={`dropdown user user-menu ${this.state.open ? 'open darkProfile' :''}`}>
                         
                         <a href="javascript:;" onClick={() => this.changeOpen()}
                             aria-expanded={this.state.open ? 'true' : 'false'}

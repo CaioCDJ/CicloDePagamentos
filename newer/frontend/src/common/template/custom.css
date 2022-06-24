@@ -33,6 +33,18 @@ body{
     border:0;
     border-radius:2px
 }
+.nav > li > a:hover, .nav > li > a:active, .nav > li > a:focus{
+  background:#3c3b3b
+}
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu{
+  border-width:2px solid #3c8dbc;
+}
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer,
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header{
+  background: rgb(32, 35, 36);
+  border:0;
+  color:#fff;
+}
 button {
     margin-left:5px;
 }
